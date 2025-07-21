@@ -5,12 +5,14 @@ import SplashScreen from '../screens/SplashScreen';
 import LanguageSelectionScreen from '../screens/LanguageSelectionScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import TabNavigator from './TabNavigator';
+import ForgotPasswordStackNavigator from './ForgotPasswordStackNavigator';
 
 export type RootStackParamList = {
   Splash: undefined;
   LanguageSelection: undefined;
   Welcome: undefined;
   MainTabs: undefined;
+  ForgotPasswordFlow: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -28,6 +30,7 @@ const AppNavigator: React.FC = () => {
         <Stack.Screen name="LanguageSelection" component={LanguageSelectionScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="MainTabs" component={TabNavigator} />
+        <Stack.Screen name="ForgotPasswordFlow" component={ForgotPasswordStackNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

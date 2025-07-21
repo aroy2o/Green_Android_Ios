@@ -1,7 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar, ScrollView, Linking } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SettingsStackParamList } from '../navigation/SettingsStackNavigator';
 
-const HelpCenterScreen: React.FC = () => {
+type HelpCenterScreenNavigationProp = StackNavigationProp<SettingsStackParamList, 'HelpCenter'>;
+
+interface HelpCenterScreenProps {
+  navigation: HelpCenterScreenNavigationProp;
+}
+
+const HelpCenterScreen: React.FC<HelpCenterScreenProps> = ({ navigation }) => {
   const helpOptions = [
     {
       id: 1,
@@ -46,7 +54,10 @@ const HelpCenterScreen: React.FC = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Help Center</Text>

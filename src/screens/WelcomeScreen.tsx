@@ -135,7 +135,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation: _navigation }
                     </View>
                     <Text style={styles.rememberMeText}>Remember me</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => _navigation.navigate('ForgotPasswordFlow')}>
                     <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
                 </TouchableOpacity>
             </View>

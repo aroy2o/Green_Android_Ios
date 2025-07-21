@@ -1,7 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SettingsStackParamList } from '../navigation/SettingsStackNavigator';
 
-const PaymentMethodsScreen: React.FC = () => {
+type PaymentMethodsScreenNavigationProp = StackNavigationProp<SettingsStackParamList, 'PaymentMethods'>;
+
+interface PaymentMethodsScreenProps {
+  navigation: PaymentMethodsScreenNavigationProp;
+}
+
+const PaymentMethodsScreen: React.FC<PaymentMethodsScreenProps> = ({ navigation }) => {
   const paymentMethods = [
     {
       id: 1,
@@ -32,7 +40,10 @@ const PaymentMethodsScreen: React.FC = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Payment Methods</Text>

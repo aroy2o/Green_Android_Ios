@@ -11,6 +11,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { TabParamList } from '../navigation/TabNavigator';
@@ -62,21 +63,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation: _navigation }) => {
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <View style={styles.homeIconContainer}>
-            <View style={styles.homeIcon}>
-              <View style={styles.homeIconRoof} />
-              <View style={styles.homeIconBase} />
-            </View>
+            <Icon name="home" size={20} color="#4CAF50" style={styles.homeIcon} />
             <Text style={styles.homeText}>Home</Text>
-            <Text style={styles.dropdownArrow}>▼</Text>
+            <Icon name="chevron-down-outline" size={16} color="#666666" />
           </View>
           <Text style={styles.addressText} numberOfLines={1}>
             A-01, Bank street , new delhi-110096 A-01, Bank street
           </Text>
         </View>
         <TouchableOpacity style={styles.profileIcon}>
-          <View style={styles.profileCircle}>
-            <Text style={styles.profileText}>👤</Text>
-          </View>
+          <Icon name="person-circle" size={36} color="grey" />
         </TouchableOpacity>
       </View>
 
@@ -89,7 +85,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation: _navigation }) => {
             placeholderTextColor="#999999"
           />
           <TouchableOpacity style={styles.searchButton}>
-            <Text style={styles.searchIcon}>🔍</Text>
+            <Icon name="search" size={24} color="#4bc54f" />
           </TouchableOpacity>
         </View>
 
@@ -189,32 +185,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   homeIcon: {
-    width: 16,
-    height: 16,
     marginRight: 6,
-    position: 'relative',
-  },
-  homeIconRoof: {
-    width: 0,
-    height: 0,
-    borderLeftWidth: 8,
-    borderRightWidth: 8,
-    borderBottomWidth: 6,
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: '#4CAF50',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  homeIconBase: {
-    width: 12,
-    height: 8,
-    backgroundColor: '#4CAF50',
-    position: 'absolute',
-    bottom: 0,
-    left: 2,
-    borderRadius: 1,
   },
   homeText: {
     fontSize: 16,
@@ -222,10 +193,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginRight: 4,
   },
-  dropdownArrow: {
-    fontSize: 12,
-    color: '#666666',
-  },
+
   addressText: {
     fontSize: 12,
     color: '#999999',
@@ -233,17 +201,6 @@ const styles = StyleSheet.create({
   },
   profileIcon: {
     padding: 4,
-  },
-  profileCircle: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#f0f0f0',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  profileText: {
-    fontSize: 18,
   },
   scrollView: {
     flex: 1,
@@ -267,10 +224,7 @@ const styles = StyleSheet.create({
   searchButton: {
     padding: 8,
   },
-  searchIcon: {
-    fontSize: 18,
-    color: '#4CAF50',
-  },
+
   ecoScoreCard: {
     backgroundColor: '#4bc54f',
     marginHorizontal: 12,

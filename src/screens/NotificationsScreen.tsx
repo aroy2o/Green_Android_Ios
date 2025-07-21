@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar, Switch, ScrollView } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SettingsStackParamList } from '../navigation/SettingsStackNavigator';
 
-const NotificationsScreen: React.FC = () => {
+type NotificationsScreenNavigationProp = StackNavigationProp<SettingsStackParamList, 'Notifications'>;
+
+interface NotificationsScreenProps {
+  navigation: NotificationsScreenNavigationProp;
+}
+
+const NotificationsScreen: React.FC<NotificationsScreenProps> = ({ navigation }) => {
   const [notifications, setNotifications] = useState({
     pushNotifications: true,
     emailNotifications: false,
@@ -63,7 +71,10 @@ const NotificationsScreen: React.FC = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Notifications</Text>

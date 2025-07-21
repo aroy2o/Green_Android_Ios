@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SettingsStackParamList } from '../navigation/SettingsStackNavigator';
 
-const FAQsScreen: React.FC = () => {
+type FAQsScreenNavigationProp = StackNavigationProp<SettingsStackParamList, 'FAQs'>;
+
+interface FAQsScreenProps {
+  navigation: FAQsScreenNavigationProp;
+}
+
+const FAQsScreen: React.FC<FAQsScreenProps> = ({ navigation }) => {
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
 
   const toggleExpanded = (id: number) => {
@@ -51,7 +59,10 @@ const FAQsScreen: React.FC = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>FAQs</Text>

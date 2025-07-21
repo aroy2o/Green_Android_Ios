@@ -1,7 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SettingsStackParamList } from '../navigation/SettingsStackNavigator';
 
-const AddressBookScreen: React.FC = () => {
+type AddressBookScreenNavigationProp = StackNavigationProp<SettingsStackParamList, 'AddressBook'>;
+
+interface AddressBookScreenProps {
+  navigation: AddressBookScreenNavigationProp;
+}
+
+const AddressBookScreen: React.FC<AddressBookScreenProps> = ({ navigation }) => {
   const addresses = [
     {
       id: 1,
@@ -29,7 +37,10 @@ const AddressBookScreen: React.FC = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backIcon}>←</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Address Book</Text>
